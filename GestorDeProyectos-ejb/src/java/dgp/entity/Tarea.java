@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gdp;
+package dgp.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -25,56 +25,56 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author sistema
  */
 @Entity
-@Table(name = "TIMELINE")
+@Table(name = "TAREA")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Timeline.findAll", query = "SELECT t FROM Timeline t"),
-    @NamedQuery(name = "Timeline.findByIdtimeline", query = "SELECT t FROM Timeline t WHERE t.idtimeline = :idtimeline"),
-    @NamedQuery(name = "Timeline.findByTexto", query = "SELECT t FROM Timeline t WHERE t.texto = :texto")})
-public class Timeline implements Serializable {
+    @NamedQuery(name = "Tarea.findAll", query = "SELECT t FROM Tarea t"),
+    @NamedQuery(name = "Tarea.findByIdtarea", query = "SELECT t FROM Tarea t WHERE t.idtarea = :idtarea"),
+    @NamedQuery(name = "Tarea.findByNombre", query = "SELECT t FROM Tarea t WHERE t.nombre = :nombre")})
+public class Tarea implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDTIMELINE")
-    private BigDecimal idtimeline;
+    @Column(name = "IDTAREA")
+    private BigDecimal idtarea;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 200)
-    @Column(name = "TEXTO")
-    private String texto;
+    @Size(min = 1, max = 50)
+    @Column(name = "NOMBRE")
+    private String nombre;
     @JoinColumn(name = "PROYECTO_IDPROYECTO", referencedColumnName = "IDPROYECTO")
     @ManyToOne
     private Proyecto proyectoIdproyecto;
 
-    public Timeline() {
+    public Tarea() {
     }
 
-    public Timeline(BigDecimal idtimeline) {
-        this.idtimeline = idtimeline;
+    public Tarea(BigDecimal idtarea) {
+        this.idtarea = idtarea;
     }
 
-    public Timeline(BigDecimal idtimeline, String texto) {
-        this.idtimeline = idtimeline;
-        this.texto = texto;
+    public Tarea(BigDecimal idtarea, String nombre) {
+        this.idtarea = idtarea;
+        this.nombre = nombre;
     }
 
-    public BigDecimal getIdtimeline() {
-        return idtimeline;
+    public BigDecimal getIdtarea() {
+        return idtarea;
     }
 
-    public void setIdtimeline(BigDecimal idtimeline) {
-        this.idtimeline = idtimeline;
+    public void setIdtarea(BigDecimal idtarea) {
+        this.idtarea = idtarea;
     }
 
-    public String getTexto() {
-        return texto;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setTexto(String texto) {
-        this.texto = texto;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Proyecto getProyectoIdproyecto() {
@@ -88,18 +88,18 @@ public class Timeline implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idtimeline != null ? idtimeline.hashCode() : 0);
+        hash += (idtarea != null ? idtarea.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Timeline)) {
+        if (!(object instanceof Tarea)) {
             return false;
         }
-        Timeline other = (Timeline) object;
-        if ((this.idtimeline == null && other.idtimeline != null) || (this.idtimeline != null && !this.idtimeline.equals(other.idtimeline))) {
+        Tarea other = (Tarea) object;
+        if ((this.idtarea == null && other.idtarea != null) || (this.idtarea != null && !this.idtarea.equals(other.idtarea))) {
             return false;
         }
         return true;
@@ -107,7 +107,7 @@ public class Timeline implements Serializable {
 
     @Override
     public String toString() {
-        return "gdp.Timeline[ idtimeline=" + idtimeline + " ]";
+        return "gdp.Tarea[ idtarea=" + idtarea + " ]";
     }
     
 }

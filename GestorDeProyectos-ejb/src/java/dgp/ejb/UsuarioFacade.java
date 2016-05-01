@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gdp;
+package dgp.ejb;
 
+import dgp.entity.Usuario;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author sistema
  */
 @Stateless
-public class ProyectoFacade extends AbstractFacade<Proyecto> {
+public class UsuarioFacade extends AbstractFacade<Usuario> {
 
     @PersistenceContext(unitName = "GestorDeProyectos-ejbPU")
     private EntityManager em;
@@ -24,8 +25,8 @@ public class ProyectoFacade extends AbstractFacade<Proyecto> {
         return em;
     }
 
-    public ProyectoFacade() {
-        super(Proyecto.class);
+    public UsuarioFacade() {
+        super(Usuario.class);
     }
     
 }
